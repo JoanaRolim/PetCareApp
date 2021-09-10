@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require('../model/User');
 const petRouter = require('./pet');
 
-const { getUsers, getUser, createUser, updateUser, deleteUser } = require('../controllers/User');
+const { getUsers, getUser, createUser, updateUser, deleteUser } = require('../controllers/admin/User');
 
 const advancedResults = require('../middleware/advancedResults');
 

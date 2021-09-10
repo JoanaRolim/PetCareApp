@@ -32,10 +32,6 @@ exports.getPet = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Pet not found with id of ${req.params.id}`, 404));
   }
 
-  if (pet.user.toString() !== req.user.id) {
-    return next(new ErrorResponse(`User ${req.params.id} is not authorized to access this pet`, 401));
-  }
-
   res.status(200).json({
     success: true,
     data: pet

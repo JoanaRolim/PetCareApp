@@ -6,10 +6,11 @@ const AgendamentoSchema = new mongoose.Schema({
     required: [true, 'Por favor, insira a data desejada.']
   },
   horario: {
-    type: Date,
-    required: [true, 'Por favor, insira o horário desejado.']
+    type: mongoose.Schema.ObjectId,
+    ref: 'Horario',
+    required: true
   },
-  usuario: {
+  user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: true
@@ -19,12 +20,12 @@ const AgendamentoSchema = new mongoose.Schema({
     ref: 'Pet',
     required: true
   },
-  servico: {
+  service: {
     type: mongoose.Schema.ObjectId,
     ref: 'Service',
     required: true
   },
-  clinica: {
+  clinic: {
     type: mongoose.Schema.ObjectId,
     ref: 'Clinic',
     required: true

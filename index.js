@@ -20,6 +20,10 @@ const service = require('./routes/service');
 const vetService = require('./routes/vetService');
 const petVaccine = require('./routes/petVaccine');
 const petAllergy = require('./routes/petAllergy');
+const admin = require('./routes/admLogin');
+const adminAuth = require('./routes/admAuth');
+const horario = require('./routes/horario');
+const agendamento = require('./routes/agendamento');
 
 const app = express();
 
@@ -40,6 +44,10 @@ app.use('/service', service);
 app.use('/vetservice', vetService);
 app.use('/petvaccine', petVaccine);
 app.use('/petallergy', petAllergy);
+app.use('/admin', admin);
+app.use('/adminauth', adminAuth);
+app.use('/horario', horario);
+app.use('/agendamento', agendamento);
 
 const PORT = process.env.PORT || 5000;
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Vaccine = require('../model/Vaccine');
 
-const { getVaccines, getVaccine, createVaccine, updateVaccine, deleteVaccine } = require('../controllers/Vaccine');
+const { getVaccines, getVaccine, createVaccine, updateVaccine, deleteVaccine } = require('../controllers/admin/Vaccine');
 
 const advancedResults = require('../middleware/advancedResults');
 

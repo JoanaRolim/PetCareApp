@@ -31,13 +31,11 @@ const sendTokenResponse = (user, statusCode, res) => {
 // @route     POST /auth/register
 // @access    Public
 exports.register = asyncHandler(async (req, res, next) => {
-  const { name, lastname, cpf, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   // Create user
   const user = await User.create({
     name,
-    lastname,
-    cpf,
     email,
     password
   });

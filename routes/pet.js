@@ -3,6 +3,7 @@ const Pet = require('../model/Pet');
 
 const petVaccineRouter = require('./petVaccine');
 const petAllergyRouter = require('./petAllergy');
+const agendamentoRouter = require('./agendamento');
 
 const { getPets, getPet, createPet, updatePet, deletePet } = require('../controllers/Pet');
 const router = express.Router({ mergeParams: true });
@@ -13,6 +14,7 @@ const advancedResults = require('../middleware/advancedResults');
 
 router.use('/:petId/petvaccines', petVaccineRouter);
 router.use('/:petId/petallergy', petAllergyRouter);
+router.use('/:petId/agendamentos', agendamentoRouter);
 
 router.get('/', advancedResults(Pet), getPets);
 

@@ -35,7 +35,7 @@ exports.createClinic = asyncHandler(async (req, res, next) => {
   req.body.user = req.user.id;
 
   // If an user is not a clinicOwner, they can't add a clinic
-  if (req.user.role != 'clinicOwner' || req.user.cpf == '') {
+  if (req.user.role != 'clinicOwner') {
     return next(new ErrorResponse(`O usuário de id: ${req.body.user} não possui uma conta apropriada para cadastrar uma clínica`, 400));
   }
 
