@@ -14,16 +14,16 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Por favor, insira um email válido.']
   },
-  role: {
-    type: String,
-    enum: ['user', 'clinicOwner'],
-    default: 'user'
-  },
   password: {
     type: String,
     required: [true, 'Por favor, insira uma senha.'],
     minlength: 6,
     select: false
+  },
+  role: {
+    type: String,
+    enum: ['user', 'clinicOwner'],
+    default: 'user'
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,

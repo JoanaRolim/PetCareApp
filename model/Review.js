@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, 'Por favor, insira o titulo da sua review.']
-  },
   text: {
     type: String,
     required: [true, 'Por favor, insira a descrição da sua review.']

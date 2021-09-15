@@ -5,16 +5,6 @@ const ClinicSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add a name.']
   },
-  email: {
-    type: String,
-    required: [true, 'Please add an email.'],
-    unique: true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email.']
-  },
-  phone: {
-    type: String,
-    required: [true, 'Please add a phone.']
-  },
   cnpj: {
     type: String,
     required: [true, 'Please add your cpf.'],
@@ -23,6 +13,28 @@ const ClinicSchema = new mongoose.Schema({
   address: {
     type: String,
     required: [true, 'Please add your adress.']
+  },
+  cidade: {
+    type: String,
+    required: [true, 'Please add your city.']
+  },
+  estado: {
+    type: String,
+    required: [true, 'Please add your state.']
+  },
+  phone: {
+    type: String,
+    required: [true, 'Please add a phone.']
+  },
+  cellphone: {
+    type: String,
+    required: [true, 'Please add a phone.']
+  },
+  email: {
+    type: String,
+    required: [true, 'Please add an email.'],
+    unique: true,
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email.']
   },
   averageRating: {
     type: Number,
