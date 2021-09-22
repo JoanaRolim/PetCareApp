@@ -7,7 +7,7 @@ const ClinicSchema = new mongoose.Schema({
   },
   cnpj: {
     type: String,
-    required: [true, 'Please add your cpf.'],
+    required: [true, 'Please add your cnpj.'],
     unique: true
   },
   address: {

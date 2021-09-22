@@ -8,7 +8,17 @@ const Clinic = require('../model/Clinic');
 // @route: GET /clinic
 // @access: public
 exports.getClinics = asyncHandler(async (req, res, next) => {
-  res.status(200).json(res.advancedResults);
+  if (req.params.userId) {
+    const clinics = await Clinic.find({ user: req.params.userId });
+
+    return res.status(200).json({
+      success: true,
+      count: clinics.length,
+      data: clinics
+    });
+  } else {
+    res.status(200).json(res.advancedResults);
+  }
 });
 
 // @description: get single clinic

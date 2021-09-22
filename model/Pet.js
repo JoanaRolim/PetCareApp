@@ -7,7 +7,7 @@ const PetSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['Cachorro', 'Gato', 'Peixe', 'Pássaro'],
+    enum: ['Cachorro', 'Gato', 'Peixe', 'Pássaro', 'Coelho'],
     required: [true, 'Insira o tipo do seu pet.']
   },
   breed: {

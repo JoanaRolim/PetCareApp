@@ -6,11 +6,15 @@ const petRouter = require('./pet');
 
 const { getUsers, getUser, createUser, updateUser, deleteUser } = require('../controllers/admin/User');
 
+const clinicRouter = require('./clinic');
+
 const advancedResults = require('../middleware/advancedResults');
 
 router.route('/').get(advancedResults(User), getUsers);
 
 router.use('/:userId/pets', petRouter);
+
+router.use('/:userId/clinics', clinicRouter);
 
 router.route('/:id').get(getUser);
 

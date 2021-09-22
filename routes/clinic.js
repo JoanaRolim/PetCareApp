@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 const Clinic = require('../model/Clinic');
 const reviewRouter = require('./review');
@@ -20,7 +20,7 @@ router.use('/:clinicId/vets', vetRouter);
 router.use('/:clinicId/horarios', horarioRouter);
 router.use('/:clinicId/agendamentos', agendamentoRouter);
 
-router.route('/').get(advancedResults(Clinic), getClinics);
+router.get('/', advancedResults(Clinic), getClinics)
 
 router.route('/:id').get(getClinic);
 

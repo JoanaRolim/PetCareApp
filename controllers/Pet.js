@@ -9,6 +9,7 @@ const Pet = require('../model/Pet');
 // @route: GET /user/:userId/pets
 // @access: public
 exports.getPets = asyncHandler(async (req, res, next) => {
+  console.log(req.params.userId);
   if (req.params.userId) {
     const pets = await Pet.find({ user: req.params.userId });
 
