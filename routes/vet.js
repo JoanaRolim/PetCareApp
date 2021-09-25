@@ -9,7 +9,7 @@ const { protect } = require('../middleware/auth');
 
 router.route('/').get(advancedResults(Vet), getVets);
 
-router.post('/', protect, createVet);
+router.post('/:clinicId', protect, createVet);
 
 router.route('/:id').get(getVet).put(protect, updateVet).delete(protect, deleteVet);
 

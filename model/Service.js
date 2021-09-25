@@ -14,6 +14,15 @@ const ServiceSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Por favor, insira o valor do servico.']
   },
+  indications: {
+    type: String,
+    required: [true, 'Por favor, insira a indicação do serviço.']
+  },
+  vet: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Vet',
+    required: true
+  },
   clinic: {
     type: mongoose.Schema.ObjectId,
     ref: 'Clinic',

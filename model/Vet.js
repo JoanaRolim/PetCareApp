@@ -5,10 +5,6 @@ const VetSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add a name.']
   },
-  lastname: {
-    type: String,
-    required: [true, 'Please add a lastname.']
-  },
   email: {
     type: String,
     required: [true, 'Please add an email.'],
@@ -22,7 +18,7 @@ const VetSchema = new mongoose.Schema({
   },
   crmv: {
     type: String,
-    required: [true, 'Please add your cpf.'],
+    required: [true, 'Please add your crmv.'],
     unique: true
   },
   phone: {
