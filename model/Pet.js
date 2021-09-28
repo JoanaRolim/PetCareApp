@@ -15,7 +15,7 @@ const PetSchema = new mongoose.Schema({
     required: [true, 'Por favor, insira a raça do seu pet.']
   },
   age: {
-    type: Number
+    type: String
   },
   weight: {
     type: String,

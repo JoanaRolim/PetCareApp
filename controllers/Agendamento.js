@@ -14,7 +14,13 @@ const Agendamento = require('../model/Agendamento');
 exports.getAgendamentos = asyncHandler(async (req, res, next) => {
   if (req.params.clinicId || req.params.petId) {
     if (req.params.clinicId) {
-      const agendamentos = await Agendamento.find({ clinic: req.params.clinicId });
+      const agendamentos = await Agendamento.find({ clinic: req.params.clinicId }).populate({
+        path: 'service',
+        select: 'name'
+      }).populate({
+        path: 'clinic',
+        select: 'name'
+      });
 
       return res.status(200).json({
         success: true,
@@ -23,7 +29,13 @@ exports.getAgendamentos = asyncHandler(async (req, res, next) => {
       });
     }
     if (req.params.petId) {
-      const agendamentos = await Agendamento.find({ pet: req.params.petId });
+      const agendamentos = await Agendamento.find({ pet: req.params.petId }).populate({
+        path: 'service',
+        select: 'name'
+      }).populate({
+        path: 'clinic',
+        select: 'name'
+      });
 
       return res.status(200).json({
         success: true,
@@ -40,7 +52,13 @@ exports.getAgendamentos = asyncHandler(async (req, res, next) => {
 // @route: GET /agendamento/:id
 // @access: public
 exports.getAgendamento = asyncHandler(async (req, res, next) => {
-  const agendamento = await Agendamento.findById(req.params.id);
+  const agendamento = await Agendamento.findById(req.params.id).populate({
+    path: 'service',
+    select: 'name'
+  }).populate({
+    path: 'clinic',
+    select: 'name'
+  });
 
   if (!agendamento) {
     return next(new ErrorResponse(`No vet with the id of ${req.params.id}`), 404);
@@ -56,13 +74,11 @@ exports.getAgendamento = asyncHandler(async (req, res, next) => {
 // @route: POST /clinic/:clinicId/create
 // @access: private
 exports.createAgendamento = asyncHandler(async (req, res, next) => {
-  req.body.clinic = req.params.clinicId;
-  req.body.user = req.user.id;
 
-  const clinic = await Clinic.findById(req.params.clinicId);
+  const clinic = await Clinic.findById(req.body.clinic);
 
   if (!clinic) {
-    return next(new ErrorResponse(`No clinic with the id of ${req.params.clinicId}`), 404);
+    return next(new ErrorResponse(`No clinic with the id of ${req.params.clinic}`), 404);
   }
 
   const agendamento = await Agendamento.create(req.body);

@@ -7,8 +7,7 @@ const PetVaccineSchema = new mongoose.Schema({
     required: true
   },
   vaccine: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Vaccine',
+    type: String,
     required: [true, 'Por favor, insira a vacina.']
   },
   date: {

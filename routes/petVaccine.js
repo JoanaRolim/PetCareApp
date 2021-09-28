@@ -9,7 +9,7 @@ const { protect } = require('../middleware/auth');
 
 router.route('/').get(advancedResults(PetVaccine), getPetVaccines);
 
-router.route('/').post(protect, createPetVaccine);
+router.route('/:petId').post(protect, createPetVaccine);
 
 router.route('/:id').get(getPetVaccine).put(protect, updatePetVaccine).delete(protect, deletePetVaccine);
 

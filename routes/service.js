@@ -13,7 +13,7 @@ router.route('/').get(advancedResults(Service), getServices);
 
 router.use('/:serviceId/vetservices', vetServiceRouter);
 
-router.route('/').post(protect, createService);
+router.route('/:clinicId').post(protect, createService);
 
 router.route('/:id').get(getService).put(protect, updateService).delete(protect, deleteService);
 

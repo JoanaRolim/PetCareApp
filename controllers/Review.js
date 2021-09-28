@@ -2,6 +2,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const Review = require('../model/Review');
 const Clinic = require('../model/Clinic');
+const User = require('../model/User');
 
 // @description: get reviews
 // @route: GET /review
@@ -9,7 +10,10 @@ const Clinic = require('../model/Clinic');
 // @access: public
 exports.getReviews = asyncHandler(async (req, res, next) => {
   if (req.params.clinicId) {
-    const reviews = await Review.find({ clinic: req.params.clinicId });
+    const reviews = await Review.find({ clinic: req.params.clinicId }).populate({
+      path: 'user',
+      select: 'name'
+    });
 
     return res.status(200).json({
       success: true,
@@ -26,6 +30,7 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
 // @access: public
 exports.getReview = asyncHandler(async (req, res, next) => {
   const review = await Review.findById(req.params.id);
+  
 
   if (!review) {
     return next(new ErrorResponse(`No review found with the id of ${req.params.id}`, 404));

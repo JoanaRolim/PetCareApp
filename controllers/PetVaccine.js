@@ -70,13 +70,6 @@ exports.updatePetVaccine = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`No pet vaccine with the id of ${req.params.id}`), 404);
   }
 
-  const pet = await Pet.findById(petVaccine.pet);
-
-  // Make sure user is pet owner
-  if (pet.user.toString() !== req.user.id) {
-    return next(new ErrorResponse(`User ${req.user.id} is not authorized to update petVaccine ${petVaccine._id}`, 401));
-  }
-
   petVaccine = await PetVaccine.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true

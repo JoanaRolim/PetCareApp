@@ -11,7 +11,7 @@ const ServiceSchema = new mongoose.Schema({
     required: [true, 'Por favor, insira a descrição do serviço.']
   },
   cost: {
-    type: Number,
+    type: String,
     required: [true, 'Por favor, insira o valor do servico.']
   },
   indications: {

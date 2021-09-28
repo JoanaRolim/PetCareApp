@@ -26,7 +26,7 @@ exports.getServices = asyncHandler(async (req, res, next) => {
 // @access: public
 exports.getService = asyncHandler(async (req, res, next) => {
   const service = await Service.findById(req.params.id).populate({
-    path: 'Clinic',
+    path: 'vet',
     select: 'name'
   });
 

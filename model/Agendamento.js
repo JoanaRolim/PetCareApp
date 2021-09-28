@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 
 const AgendamentoSchema = new mongoose.Schema({
   data: {
-    type: Date,
+    type: String,
     required: [true, 'Por favor, insira a data desejada.']
   },
   horario: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Horario',
+    type: String,
     required: true
   },
   user: {
